@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import  styles from '../../styles/Card.module.css';
+import  styles from '../styles/Card.module.css';
 
 export default function ImgMediaCard({ name, species , image, location }) {
 

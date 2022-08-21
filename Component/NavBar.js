@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import styles from '../../styles/NavBar.module.css';
+import styles from '../styles/NavBar.module.css';
 import { indigo } from '@mui/material/colors';
 import { createTheme } from '@mui/material';
 

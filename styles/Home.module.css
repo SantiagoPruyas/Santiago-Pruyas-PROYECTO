@@ -3,10 +3,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
 }
-.piedepagina {
-    width: 100%;
-    background-color: #0a141d;
-}
+
 .back{
     background-color: #fff;
 }

@@ -1,10 +1,10 @@
 import styles from '../styles/Home.module.css';
 import { useEffect , useState } from "react";
-import ImgMediaCard from "../Component/Card/card.js";
-import NavBar from "../Component/Card/NavBar";
-import Footer from "../Component/Card/Footer";
+import ImgMediaCard from "../Component/card.js";
+import NavBar from "../Component/NavBar";
+import Footer from "../Component/Footer";
 import axios from "axios";
-import TransitionsModal from '../Component/Card/ModalForm';
+import TransitionsModal from '../Component/ModalForm';
 
 export default function Home() {
   const [characters, setCharacters] = useState ([])
@@ -40,11 +40,6 @@ export default function Home() {
   return (
     <article className={styles.back}>
         
-        <header>
-          <NavBar></NavBar>
-
-        </header>
-        
         <div className={styles.background}>
             { characters.map( character => <ImgMediaCard
               key={character.id}
@@ -58,9 +53,6 @@ export default function Home() {
         <div className={styles.modal}>
           <TransitionsModal createElement= {createElement}></TransitionsModal>
         </div>
-        <footer className={styles.piedepagina}>
-              <Footer></Footer>
-        </footer>
     </article> 
   )
 
