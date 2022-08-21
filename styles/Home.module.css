@@ -1,0 +1,22 @@
+.background {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+}
+.piedepagina {
+    width: 100%;
+    background-color: #0a141d;
+}
+.back{
+    background-color: #fff;
+}
+
+.modal {
+    margin: auto;
+    margin-top: 2.5rem;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
