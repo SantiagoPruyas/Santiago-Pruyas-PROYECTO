@@ -1,0 +1,23 @@
+.container {
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.container .h1 {
+    font-weight: 600px;
+}
+.container .p {
+    padding: 0 1rem;
+    font-size: 16px;
+    font-weight: 300px;
+}
+.img{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    border-radius: 5px;
+}

@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
 import Head from 'next/head';
+import styles from '../../styles/Character.module.css';
 
-const RicksDetails = ({id}) => {
+const RicksDetails = () => {
     const router = useRouter()
 
     const {RickID} = router.query
@@ -25,20 +26,19 @@ const RicksDetails = ({id}) => {
 
     
 
-    return character ? <div>
+    return character ? <div className={styles.container}>
         <Head>
             <title>{character ? character.name:"Detalle de Personaje"}</title>
         </Head>
-        <h1> Rick: {character.name} </h1>
-        <p> Estado : {character.status} </p>
+        <h1> {character.name} </h1>
+        <img src={character.image} className={styles.img}></img>
+        <p> Estado: {character.status} </p>
         <p> Especie: {character.species} </p>
         <p> Genero: {character.gender} </p>
         <p> Lugar de Origen: {character.origin.name} </p>
 
         <p> Actualmente esta en: {character.location.name}</p>
-        <p>
-             <img src={character.image}></img>
-        </p>
+
     </div>: <p>Loading...</p>
 }
 
