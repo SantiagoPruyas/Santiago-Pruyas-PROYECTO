@@ -1,4 +1,4 @@
-import NavBar from "../Component/NavBar" ;
+import NavBar from "../Component/NavBar/NavBar" ;
 import Footer from "../Component/Footer";
 import styles from "../styles/Layout.module.css"
 

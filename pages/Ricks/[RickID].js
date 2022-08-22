@@ -9,9 +9,9 @@ import { style } from "@mui/system";
 const RicksDetails = () => {
     const router = useRouter()
 
-    const {RickID} = router.query
-    
-    const [character, setCharacter] =  useState()
+    const { RickID } = router.query
+
+    const [character, setCharacter] = useState()
 
     const getCharacters = async () => {
         const response = await axios.get(
@@ -25,11 +25,11 @@ const RicksDetails = () => {
         getCharacters()
     }, [])
 
-    
+
 
     return character ? <div className={styles.container}>
         <Head>
-            <title>{character ? character.name:"Detalle de Personaje"}</title>
+            <title>{character ? character.name : "Detalle de Personaje"}</title>
         </Head>
         <img src={character.image} className={styles.img}></img>
         <div className={styles.text}>
@@ -40,7 +40,7 @@ const RicksDetails = () => {
             <p> Lugar de Origen: {character.origin.name} </p>
             <p> Actualmente esta en: {character.location.name}</p>
         </div>
-    </div>: <p>Loading...</p>
+    </div> : <p>Loading...</p>
 }
 
-export default RicksDetails ;
+export default RicksDetails;
