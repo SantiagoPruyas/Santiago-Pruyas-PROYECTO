@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Head from 'next/head';
 import styles from '../../styles/Character.module.css';
+import { style } from "@mui/system";
 
 const RicksDetails = () => {
     const router = useRouter()
@@ -30,15 +31,15 @@ const RicksDetails = () => {
         <Head>
             <title>{character ? character.name:"Detalle de Personaje"}</title>
         </Head>
-        <h1> {character.name} </h1>
         <img src={character.image} className={styles.img}></img>
-        <p> Estado: {character.status} </p>
-        <p> Especie: {character.species} </p>
-        <p> Genero: {character.gender} </p>
-        <p> Lugar de Origen: {character.origin.name} </p>
-
-        <p> Actualmente esta en: {character.location.name}</p>
-
+        <div className={styles.text}>
+            <h1 className={styles.name}> {character.name} </h1>
+            <p> Estado: {character.status} </p>
+            <p> Especie: {character.species} </p>
+            <p> Genero: {character.gender} </p>
+            <p> Lugar de Origen: {character.origin.name} </p>
+            <p> Actualmente esta en: {character.location.name}</p>
+        </div>
     </div>: <p>Loading...</p>
 }
 
