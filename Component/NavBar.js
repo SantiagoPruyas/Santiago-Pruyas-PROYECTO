@@ -58,7 +58,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            Rick's in the Multiverse
+            NFT's Rick and Morty
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

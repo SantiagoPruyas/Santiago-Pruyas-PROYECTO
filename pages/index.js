@@ -1,8 +1,6 @@
 import styles from '../styles/Home.module.css';
 import { useEffect , useState } from "react";
 import ImgMediaCard from "../Component/card.js";
-import NavBar from "../Component/NavBar";
-import Footer from "../Component/Footer";
 import axios from "axios";
 import TransitionsModal from '../Component/ModalForm';
 
@@ -10,7 +8,7 @@ export default function Home() {
   const [characters, setCharacters] = useState ([])
 
   const getCharacters = async () => {
-    const response = await axios.get("https://rickandmortyapi.com/api/character/?name=rick&status=alive"
+    const response = await axios.get("https://rickandmortyapi.com/api/character/"
     ,
     )
     setCharacters (response.data.results)
@@ -43,6 +41,7 @@ export default function Home() {
         <div className={styles.background}>
             { characters.map( character => <ImgMediaCard
               key={character.id}
+              id={character.id}
               name={character.name}
               species={character.species}
               location={character.location.name}
