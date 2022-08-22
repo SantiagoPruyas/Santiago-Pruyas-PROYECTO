@@ -3,6 +3,7 @@ import { useEffect , useState } from "react";
 import ImgMediaCard from "../Component/card.js";
 import axios from "axios";
 import TransitionsModal from '../Component/ModalForm';
+import Head from 'next/head';
 
 export default function Home() {
   const [characters, setCharacters] = useState ([])
@@ -37,7 +38,9 @@ export default function Home() {
   }
   return (
     <article className={styles.back}>
-        
+        <Head>
+          <title>Home</title>
+        </Head>
         <div className={styles.background}>
             { characters.map( character => <ImgMediaCard
               key={character.id}
