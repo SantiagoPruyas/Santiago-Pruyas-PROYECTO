@@ -11,15 +11,16 @@ import styles from '../styles/Login.module.css'
 import { useState } from 'react'
 import Link from 'next/link'
 
-const Login = () => {
+const Register = () => {
     const [loading, setLoading] = useState(false)
     const [user, setUser] = useState({
         email: "",
         password: "",
+        passwordConfirm: "",
     })
     const [errPass, setErrPass] = useState (false)
     const [err, SetErr] = useState ("")
-    
+
     function handleChange(e) {
         setUser({ ...user, [e.target.value]: e.target.value })
     }
@@ -40,7 +41,7 @@ const Login = () => {
                 component="form"
                 sx={{
                     maxWidth: '400px',
-                    height: '450px',
+                    height: '500px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -56,7 +57,7 @@ const Login = () => {
                         textAlign: 'center',
                     }}
                 >
-                    INICIAR SESION
+                    REGISTRARSE
                 </Typography>
                 <TextField
                     sx={{ margin: 3 }}
@@ -76,9 +77,16 @@ const Login = () => {
                     label="Contraseña"
                     variant="outlined"
                     onChange={handleChange} />
-                <span>
-                    <Link href="olvidoPass">¿Olvidaste tu contraseña?</Link>
-                </span>
+                <TextField
+                    sx={{ margin: 3 }}
+                    type="password"
+                    name="passwordConfirm"
+                    required
+                    id="ConfirmPassword"
+                    label="Confirmar Contraseña"
+                    variant="outlined"
+                    onChange={handleChange} />
+                {errPass ? "Las contraseñas deben coincidir": ""}
                 <Stack spacing={1} direction="column">
                     <Button variant="contained"
                         sx={{
@@ -89,14 +97,15 @@ const Login = () => {
                         }}
                         type="submit"
                         disabled={loading}>
-                        Iniciar Sesión
+                        Registrar Usuario
                     </Button>
                 </Stack>
                 <Stack spacing={1} direction="row">
                     <p> O desea iniciar sesion con: </p>
-                    <IconButton type="submit"
-                        disabled={loading}
-                        onClick={handleRegWithGoogle} aria-label="delete">
+                    <IconButton 
+                    type="submit"
+                    disabled={loading}
+                    onClick={handleRegWithGoogle} aria-label="delete">
                         <GoogleIcon />
                     </IconButton>
                     <IconButton aria-label="delete">
@@ -104,7 +113,7 @@ const Login = () => {
                     </IconButton>
                 </Stack>
                 <span>
-                    ¿Aun no te has registrado? <Link href="/register">Registrate</Link>
+                    ¿Ya tienes una cuenta? <Link href="/login">Inicia Sesion</Link>
                 </span>
 
 
@@ -113,5 +122,4 @@ const Login = () => {
     )
 }
 
-export default Login
-
+export default Register

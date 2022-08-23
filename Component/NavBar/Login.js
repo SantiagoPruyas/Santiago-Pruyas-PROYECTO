@@ -75,16 +75,18 @@ export default function AccountMenu() {
                 <MenuItem>
                     <Avatar /> Profile
                 </MenuItem>
-                <MenuItem>
-                    <Avatar /> My account
-                </MenuItem>
-                <Divider />
                 <Link href="/login">
+                    <MenuItem>
+                        <Avatar /> Log In
+                    </MenuItem>
+                </Link>
+                <Divider />
+                <Link href="/register">
                     <MenuItem>
                         <ListItemIcon>
                             <PersonAdd fontSize="small" />
                         </ListItemIcon>
-                        Add another account
+                        Register
                     </MenuItem>
                 </Link>
                 <MenuItem>
@@ -93,12 +95,14 @@ export default function AccountMenu() {
                     </ListItemIcon>
                     Settings
                 </MenuItem>
+                <Link href="/logout">
                 <MenuItem>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
                     Logout
                 </MenuItem>
+                </Link>
             </Menu>
         </React.Fragment>
     );
