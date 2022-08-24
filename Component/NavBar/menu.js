@@ -11,9 +11,14 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Link from 'next/link';
+import {useAuth} from "../../context/auth";
+import { useState } from 'react';
 
 export default function AccountMenu() {
+    const {currentUser} = useAuth()
+    const {logOut} = useAuth()
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [loading, setLoading] = useState ()
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -21,6 +26,13 @@ export default function AccountMenu() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    function handleLogOut () {
+        logOut()
+        .then(()=>console.log("Listoooo"))
+        .catch (()=>console.log("No, no se pudo che"))
+    }
+
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -75,34 +87,32 @@ export default function AccountMenu() {
                 <MenuItem>
                     <Avatar /> Profile
                 </MenuItem>
-                <Link href="/login">
+                {!currentUser && <Link href="/login">
                     <MenuItem>
                         <Avatar /> Log In
                     </MenuItem>
-                </Link>
+                </Link>}
                 <Divider />
-                <Link href="/register">
+                {!currentUser && <Link href="/register">
                     <MenuItem>
                         <ListItemIcon>
                             <PersonAdd fontSize="small" />
                         </ListItemIcon>
                         Register
                     </MenuItem>
-                </Link>
+                </Link>}
                 <MenuItem>
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>
                     Settings
                 </MenuItem>
-                <Link href="/logout">
-                <MenuItem>
+                <MenuItem onClick={handleLogOut} disabled={loading}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
                     Logout
                 </MenuItem>
-                </Link>
             </Menu>
         </React.Fragment>
     );

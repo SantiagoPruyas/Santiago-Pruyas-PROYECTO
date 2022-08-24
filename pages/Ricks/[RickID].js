@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Head from 'next/head';
 import styles from '../../styles/Character.module.css';
-import { style } from "@mui/system";
+import { privatePage } from "../../context/route";
 
 const RicksDetails = () => {
     const router = useRouter()
@@ -43,4 +43,4 @@ const RicksDetails = () => {
     </div> : <p>Loading...</p>
 }
 
-export default RicksDetails;
+export default privatePage(RicksDetails);

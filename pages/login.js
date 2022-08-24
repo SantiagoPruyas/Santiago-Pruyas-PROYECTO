@@ -10,53 +10,51 @@ import FacebookIcon from '@mui/icons-material/Facebook'
 import styles from '../styles/Login.module.css'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useAuth } from '../context/auth'
+import { publicPage } from "../context/route"
 
 const Login = () => {
+    const { logIn, regWithGoogle } = useAuth()
     const [loading, setLoading] = useState(false)
     const [user, setUser] = useState({
         email: "",
         password: "",
     })
-    const [errPass, setErrPass] = useState (false)
-    const [err, SetErr] = useState ("")
-    
+
+    const [errPass, setErrPass] = useState(false)
+    const [err, SetErr] = useState("")
+
     function handleChange(e) {
         setUser({ ...user, [e.target.value]: e.target.value })
     }
 
-    function handleSubmit(e) { }
+    function handleSubmit(e) {
+        e.preventDefault()
+        setLoading(true)
+        logIn(user)
+            .then(() => setLoading(false))
+            .catch(() => {
+                console.log("Usuario y/o contraseña incorrectos")
+                setLoading(false)
+            })
+    }
 
-    function handleRegWithGoogle() { }
+    function handleRegWithGoogle() {
+        regWithGoogle()
+            .then(() => console.log("Entraste"))
+            .catch(() => console.log("Salio mal"))
+    }
 
     return (
-        <div className={styles.login}
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
-            <Box
-                component="form"
-                sx={{
-                    maxWidth: '400px',
-                    height: '450px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'space-evenly',
-                    border: '1px solid gray',
-                    borderRadius: '5px',
-                    '& > :not(style)': { m: 1, width: '25ch' },
-                }}
-            >
+        <div className={styles.login}>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <Typography
                     sx={{
                         color: 'black',
                         textAlign: 'center',
                     }}
                 >
-                    INICIAR SESION
+                    Inicia sesion con tu cuenta
                 </Typography>
                 <TextField
                     sx={{ margin: 3 }}
@@ -105,13 +103,10 @@ const Login = () => {
                 </Stack>
                 <span>
                     ¿Aun no te has registrado? <Link href="/register">Registrate</Link>
-                </span>
-
-
-            </Box>
+                </span></form>
         </div>
     )
 }
 
-export default Login
+export default publicPage(Login)
 

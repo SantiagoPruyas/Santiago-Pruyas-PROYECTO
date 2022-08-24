@@ -7,7 +7,8 @@ import Container from '@mui/material/Container';
 import styles from '../../styles/NavBar.module.css';
 import { indigo } from '@mui/material/colors';
 import { createTheme } from '@mui/material';
-import AccountMenu from './Login';
+import AccountMenu from './menu';
+
 
 const ResponsiveAppBar = () => {
 
