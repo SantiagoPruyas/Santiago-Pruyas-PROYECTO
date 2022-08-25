@@ -8,6 +8,6 @@ const firebaseConfig = {
     storageBucket: "santiago-pruyas-proyecto.appspot.com",
     messagingSenderId: "918489764951",
     appId: "1:918489764951:web:b993dec2f1cd10bc96bf12"
-}
+  };
 const app = firebase.initializeApp(firebaseConfig)
 export const auth = app.auth()

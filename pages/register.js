@@ -1,48 +1,48 @@
-import * as React from 'react'
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-import { Typography } from '@mui/material'
-import GoogleIcon from '@mui/icons-material/Google'
-import styles from '../styles/Register.module.css'
-import { useState } from 'react'
-import Link from 'next/link'
-import { useAuth } from "../context/auth"
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
+import GoogleIcon from '@mui/icons-material/Google';
+import styles from '../styles/Register.module.css';
+import { useState } from 'react';
+import Link from 'next/link';
+import { useAuth } from "../context/auth";
+import { publicPage } from '../context/route';
 
 const Register = () => {
-    const { regWithGoogle, register } = useAuth()
-    const [loading, setLoading] = useState(false)
+    const { regWithGoogle, register, currentUser } = useAuth();
+    const [loading, setLoading] = useState(false);
     const [user, setUser] = useState({
         email: "",
         password: "",
         passwordConfirm: "",
-    })
-    const [errPass, setErrPass] = useState(false)
-    const [err, setErr] = useState("")
+    });
+    const [errPass, setErrPass] = useState(false);
 
     function handleChange(e) {
         setUser({ ...user, [e.target.value]: e.target.value })
-    }
+    };
 
     function handleSubmit(e) {
         e.preventDefault()
         if (user.password !== user.passwordConfirm) {
-            return setErrPass(true)
+            return setErrPass(true);
         } else {
-            setErrPass(false)
-        }
-        setLoading(true)
+            setErrPass(false);
+        };
+        setLoading(true);
         register(user)
-            .then(() => console.log("registro listo"))
-            .catch(() => {
-                setLoading(false)
+            .then(() => {
+                console.log("Regristo Listo");
+                console.log(user);
             })
-    }
+            .catch(() => setLoading(false)
+            )
+    };
 
     function handleRegWithGoogle() {
-        regWithGoogle()
-            .then(() => console.log("salio bien"))
-            .catch(() => console.log("salio mal"))
-    }
+        regWithGoogle().then(() => console.log("salio bien"));
+    };
 
     return (
         <div className={styles.register}>
@@ -110,7 +110,7 @@ const Register = () => {
                 ¿Ya tienes una cuenta? <Link href="/login">Inicia Sesión</Link>
             </span>
         </div >
-    )
+    );
 }
 
-export default Register
+export default publicPage(Register)
