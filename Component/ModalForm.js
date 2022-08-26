@@ -8,6 +8,7 @@ import { Grid } from '@mui/material';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import styles from "../styles/Modal.module.css";
+import Image from 'next/image';
 
 export default function TransitionsModal({ createElement }) {
   const [open, setOpen] = React.useState(false);
