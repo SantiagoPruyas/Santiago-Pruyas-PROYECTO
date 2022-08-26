@@ -5,8 +5,19 @@ import { useState } from "react";
 import Head from 'next/head';
 import styles from '../../styles/Character.module.css';
 import { privatePage } from "../../context/route";
+import { Button } from "@mui/material";
+import { indigo } from '@mui/material/colors';
+import { createTheme } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const RicksDetails = () => {
+    const boton = createTheme({
+        palette: {
+            primary: {
+                main: indigo[900],
+            },
+        }
+    });
     const router = useRouter()
 
     const { RickID } = router.query
@@ -39,7 +50,11 @@ const RicksDetails = () => {
             <p> Genero: {character.gender} </p>
             <p> Lugar de Origen: {character.origin.name} </p>
             <p> Actualmente esta en: {character.location.name}</p>
+            <Button variant="contained" theme={boton} size="small" startIcon={<ShoppingCartIcon />}>
+                Comprar
+            </Button>
         </div>
+
     </div> : <p>Loading...</p>
 }
 

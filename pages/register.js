@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from "../context/auth";
 import { publicPage } from '../context/route';
+import {useRouter} from "next/router"
 
 const Register = () => {
     const { regWithGoogle, register, currentUser } = useAuth();
@@ -18,6 +19,7 @@ const Register = () => {
         passwordConfirm: "",
     });
     const [errPass, setErrPass] = useState(false);
+    const router = useRouter()
 
     function handleChange(e) {
         setUser({ ...user, [e.target.value]: e.target.value })
@@ -35,6 +37,7 @@ const Register = () => {
             .then(() => {
                 console.log("Regristo Listo");
                 console.log(user);
+                router.push("/")
             })
             .catch(() => setLoading(false)
             )
