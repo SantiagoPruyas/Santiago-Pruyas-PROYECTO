@@ -24,7 +24,7 @@ const Login = () => {
     const [err, SetErr] = useState("")
 
     function handleChange(e) {
-        setUser({ ...user, [e.target.value]: e.target.value })
+        setUser({ ...user, [e.target.name]: e.target.value })
     }
 
     function handleSubmit(e) {
