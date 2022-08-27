@@ -22,7 +22,7 @@ const Register = () => {
     const router = useRouter()
 
     function handleChange(e) {
-        setUser({ ...user, [e.target.value]: e.target.value })
+        setUser({ ...user, [e.target.name]: e.target.value })
     };
 
     function handleSubmit(e) {
@@ -36,7 +36,6 @@ const Register = () => {
         register(user)
             .then(() => {
                 console.log("Regristo Listo");
-                console.log(user);
                 router.push("/")
             })
             .catch(() => setLoading(false)
