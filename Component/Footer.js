@@ -7,7 +7,7 @@ import styles from '../styles/Footer.module.css';
 
 const Footer = () => {
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.grupo1}>
                 <div className={styles.box}>
                     <figure>

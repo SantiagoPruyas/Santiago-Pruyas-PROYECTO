@@ -8,7 +8,6 @@ import { Grid } from '@mui/material';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import styles from "../styles/Modal.module.css";
-import Image from 'next/image';
 
 export default function TransitionsModal({ createElement }) {
   const [open, setOpen] = React.useState(false);
@@ -50,8 +49,8 @@ export default function TransitionsModal({ createElement }) {
               </Grid>
               <Grid className={styles.item}>
                 <Button variant="outlined" color="primary" onClick={() => {
-                  handleClose
                   createElement(name, species)
+                  setOpen(false)
                 }}>
                   Crear bebe rick
                 </Button>

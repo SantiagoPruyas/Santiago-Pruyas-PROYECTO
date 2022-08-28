@@ -1,6 +1,8 @@
 import React from "react";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 import { useAuth } from "./auth";
+import CircularProgressWithLabel from "../Component/Loading";
+import styles from "../styles/Loading.module.css";
 
 export function publicPage(Component) {
     return function PublicPage(props) {
@@ -8,7 +10,10 @@ export function publicPage(Component) {
         const router = useRouter()
         if (auth.currentUser) {
             router.replace("/")
-            return <h1>Loading...</h1>
+            return <div className={styles.loading}>
+                <CircularProgressWithLabel >
+                </CircularProgressWithLabel>
+            </div>
         }
         return <Component {...props} />
     }
@@ -20,7 +25,10 @@ export function privatePage(Component) {
         const router = useRouter()
         if (!auth.currentUser) {
             router.replace("/login")
-            return <h1>Loading...</h1>
+            return <div className={styles.loading}>
+                <CircularProgressWithLabel >
+                </CircularProgressWithLabel>
+            </div>
         }
         return <Component {...props} />
     }
